@@ -38,6 +38,7 @@
             <input wire:model.lazy="establishment.contact" class="form-control" type="text" placeholder="" name="contact">
             @error('establishment.contact') <span class="text-red text-xs">{{ $message }}</span> @enderror
         </div>
+        @error('establishment') <span class="text-red text-xs">{{ $message }}</span> @enderror
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

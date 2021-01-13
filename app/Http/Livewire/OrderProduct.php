@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Str;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Order;
@@ -66,7 +67,18 @@ class OrderProduct extends Component
         $this->product->update([
             'quantity' => $this->product->quantity - $this->quantityToOrder,
         ]);
+        
+        $random_id;
+        while(true) {
+            $random_id = Str::random($length = 8);
+            $order_aux = Order::where('random_id')->get();
+            if(count($order_aux) == 0) {
+                break;
+            }
+        }
+
         Order::create([
+            'random_id'         => $random_id,
             'buyer_id'          => Auth()->user()->id,
             'product_id'        => $this->product['id'],
             'establishment_id'  => $this->product['establishment_id'],

@@ -13,12 +13,6 @@ class EditProduct extends Component
     public $quantity_change = 0;
     public $product;
 
-    /*
-    Rule::unique('products')->where(function ($query) {
-        return $query->where('id', '!=', $this->product_id)->where('establishment_id', '=', $this->product['establishment_id']);
-    })],
-    */
-
     public function rules() 
     {
         return [

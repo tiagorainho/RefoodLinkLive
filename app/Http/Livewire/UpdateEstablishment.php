@@ -5,20 +5,25 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Establishment;
 use App\Helpers\Location;
+use App\Rules\UniqueEstablishment;
 
 class UpdateEstablishment extends Component
 {
     public $establishment;
 
-    protected $rules = [
-        'establishment.name'        => 'required',
-        'establishment.description' => 'required',
-        'establishment.address'     => 'required',
-        'establishment.city'        => 'required',
-        'establishment.country'     => 'required',
-        'establishment.schedule'    => 'required',
-        'establishment.contact'     => 'required',
-    ];
+    public function rules() 
+    {
+        return [
+            'establishment.name'        => 'required',
+            'establishment.description' => 'required',
+            'establishment.address'     => 'required',
+            'establishment.city'        => 'required',
+            'establishment.country'     => 'required',
+            'establishment.schedule'    => 'required',
+            'establishment.contact'     => 'required',
+            'establishment'             => [new UniqueEstablishment],
+        ];
+    }
 
     public function render()
     {
@@ -45,8 +50,9 @@ class UpdateEstablishment extends Component
             'city' => $this->establishment['city'],
             'country' => $this->establishment['country'],
         ]);
-
-        $this->establishment->update([
+        
+        $establishment_new = Establishment::find($this->establishment['id']);
+        $establishment_new->update([
             'name'          => $this->establishment['name'],
             'description'   => $this->establishment['description'],
             'schedule'      => $this->establishment['schedule'],

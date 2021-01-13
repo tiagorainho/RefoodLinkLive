@@ -7,7 +7,7 @@
         <hr class="sidebar-divider my-0">
         <ul class="nav navbar-nav text-light" id="accordionSidebar">
             @if($is_owner)
-            <li class="nav-item"><a class="nav-link active" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
             <li class="nav-item"><a class="nav-link" href="/estabelecimentos"><i class="fas fa-table"></i><span>Estabelecimentos</span></a></li>
             @endif
             <li class="nav-item"><a class="nav-link" href="/perfil"><i class="fas fa-user"></i><span>Perfil</span></a></li>            

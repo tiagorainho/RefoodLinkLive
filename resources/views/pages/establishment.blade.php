@@ -48,8 +48,6 @@
         </div>
     </div>
 
-    Meter o catalogo com um "mostrar mais" e o historico com paginacao
-
     @if($is_owner and !$client_mode)
     <div class="row">
         <div class="col">
@@ -85,88 +83,35 @@
         'content' => 'edit-product'
     ])
 
-    <div class="card shadow">
-        <div class="card-header py-3">
-            <p class="text-primary m-0 font-weight-bold">Histórico</p>
+    @livewire('modal', [
+        'id' => 'modalConfirmOrder',
+        'title' => 'Confirmar Pedido',
+        'content' => 'confirm-order',
+        'modalClass' => 'modal-dialog modal-dialog-centered',
+    ])
+
+    @livewire('modal', [
+        'id' => 'modalShowOrder',
+        'title' => 'Mostrar Pedido',
+        'content' => 'show-order',
+        'modalClass' => 'modal-dialog modal-dialog-centered',
+    ])
+
+    <div class="row">
+        <div class="col">
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6 text-nowrap">
-                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Mostrar&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm">
-                                <option value="10" selected="">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>&nbsp;</label></div>
-                </div>
-                <div class="col-md-6">
-                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
-                </div>
-            </div>
-            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                <table class="table my-0" id="dataTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Conta</th>
-                            <th>Unidades</th>
-                            <th>Data</th>
-                            <th style="width: 80px"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>3</td>
-                            <td><div class="circle-green"></div><span class="ml-2">Pastel de Nata<span></td>
-                            <td>6 €</td>
-                            <td>3</td>
-                            <td>23-11-2020</td>
-                            <td><button class="btn btn-primary">Ver</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><div class="circle-yellow"></div><span class="ml-2">Biscoitos<span></td>
-                            <td>5 €</td>
-                            <td>2</td>
-                            <td>23-11-2020</td>
-                            <td><button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mais
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="#">Cancelar</a>
-                                    <a class="dropdown-item" href="#">Confirmar</a>
-                                  </div>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td><div class="circle-red"></div><span class="ml-2">Croissants<span></td>
-                            <td>4 €</td>
-                            <td>2</td>
-                            <td>23-11-2020</td>
-                            <td><button class="btn btn-primary">Ver</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="row">
-                <div class="col-md-6 align-self-center">
-                    
-                </div>
-                <div class="col-md-6">
-                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                        </ul>
-                    </nav>
-                </div>
+        <div class="col-auto">
+            <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                <a class="btn btn-primary btn-sm  d-sm-inline-block" role="button" data-toggle="modal" data-target="#modalConfirmOrder">Confirmar pedido</a>
             </div>
         </div>
     </div>
+
+    @livewire('history', [
+        'type' => 'establishment',
+        'id' => $establishment->id
+    ])
+
     @else
         @livewire('catalog', ['id' => $establishment->id])
         <h3 class="text-dark mb-1">Direções</h3>

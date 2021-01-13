@@ -19,7 +19,7 @@ class CreateEstablishment extends Component
     ];
 
     protected $rules = [
-        'establishment.name' => 'required',
+        'establishment.name' => 'required|unique:establishments,name',
         'establishment.description' => 'required',
         'establishment.address' => 'required',
         'establishment.city' => 'required',
