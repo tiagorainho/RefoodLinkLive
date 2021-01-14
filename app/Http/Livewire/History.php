@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Establishment;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 
 class History extends Component
 {
@@ -42,10 +43,13 @@ class History extends Component
     {
         if($search == '') $search = $this->search;
         if($this->type=="establishment") {
-            $this->orders = Establishment::find($this->object_id)->orders()->where('random_id', 'like', '%'.$search.'%')->get();
-            foreach($this->orders as $order) {
-                $order['product'] = Product::find($order->product_id);
-            }
+            $this->orders = Establishment::find($this->object_id)->orders()->where('random_id', 'like', '%'.$search.'%')->get();   
+        }
+        else if($this->type=='consumer'){
+            $this->orders = User::find($this->object_id)->orders()->where('random_id', 'like', '%'.$search.'%')->get();  
+        }
+        foreach($this->orders as $order) {
+            $order['product'] = Product::find($order->product_id);
         }
     }
 }

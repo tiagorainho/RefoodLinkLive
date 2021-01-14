@@ -15,6 +15,8 @@
                 <li class="nav-item"><a class="nav-link" href="/entrar"><i class="far fa-user-circle"></i><span>Entrar</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="/registar"><i class="fas fa-user-circle"></i><span>Registar</span></a></li>
             -->
+            <li class="nav-item"><a class="nav-link" href="/pedidos"><i class="fas fa-list fa-sm fa-fw"></i><span>Histórico</span></a></li>
+
             <li class="nav-item"><a class="nav-link" href="/procurar"><i class="fas fa-search"></i><span>Procurar</span></a></li>
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>

@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/perfil', Profile::class);
     Route::get('/procurar', Search::class)->name('search');
     Route::get('/estabelecimento/{id}', Establishment::class);
+    Route::get('/pedidos', ShowOrders::class);
 });
 
 Route::get('/entrar', Login::class)->name('login');

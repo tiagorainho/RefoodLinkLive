@@ -101,4 +101,9 @@ class User extends Authenticatable
         return $this->type == $this::RANK_ADMIN;
     }
 
+    public function orders()
+    {
+        return Order::where('buyer_id', '=', $this->id)->orderBy('id', 'DESC');
+    }
+
 }

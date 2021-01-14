@@ -26,18 +26,14 @@
     @livewireStyles
 </head>
 
-<body id="page-top">
+<body id="page-top" class="bg-gradient-primary">
     <div id="wrapper">
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
-                <div wire:offline>
-                    <div style="margin: 0 auto;">
-                        You are offline.
-                    </div>
-                </div>
-                @yield('content')
+        <div wire:offline>
+            <div style="margin: 0 auto;">
+                You are offline.
             </div>
         </div>
+        @yield('content')
     </div>
     <script src={{ asset("assets/js/jquery.min.js") }}></script>
     <script src={{ asset("assets/bootstrap/js/bootstrap.min.js") }}></script>
