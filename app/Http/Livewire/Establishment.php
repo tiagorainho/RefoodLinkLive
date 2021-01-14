@@ -11,7 +11,7 @@ class Establishment extends Component
     public $user;
     public $is_owner = false;
     public $establishment;
-    public $client_mode = false;
+    public $client_mode = true;
     public $favorite;
 
     protected function getListeners()
@@ -46,6 +46,7 @@ class Establishment extends Component
             foreach($this->user->establishments() as $establishment) {
                 if($establishment->id == $id) {
                     $this->is_owner = true;
+                    $this->client_mode = false;
                     break;
                 }
             }
