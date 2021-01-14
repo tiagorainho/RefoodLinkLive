@@ -1,23 +1,11 @@
 
 //startMap("Espeto do sul Aveiro");
-function startMap(key, destination) {
+function startMap(key, origin, destination) {
     mapboxgl.accessToken =  key;
+
+    setupMap([origin[1], origin[0]])
     
-    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
-      enableHighAccuracy: true
-    })
-  
-    var current_position
-    function successLocation(position) {
-      setupMap([position.coords.longitude, position.coords.latitude], destination)
-      current_position = position
-    }
-  
-    function errorLocation() {
-      setupMap([-2.24, 53.48])
-    }
-  
-    function setupMap(center, destination) {
+    function setupMap(center) {
       const map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
@@ -31,12 +19,11 @@ function startMap(key, destination) {
       var directions = new MapboxDirections({
         accessToken: mapboxgl.accessToken
       })
-  
-  
+      
       map.addControl(directions, "top-left")
   
       map.on('load', () => {
-        directions.setOrigin([current_position.coords.longitude,current_position.coords.latitude]);
+        directions.setOrigin([origin[1],origin[0]]);
         });
     
       map.on('load', () => {

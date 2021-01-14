@@ -17,8 +17,8 @@ class Establishment extends Component
     protected function getListeners()
     {
         return [
-            'refreshParent' => 'refreshEstablishment',
-            'setupMap' => 'setupMap',
+            'refreshParent'         => 'refreshEstablishment',
+            'returnCoordinates'     => 'refreshCoordinates',
         ];
     }
 
@@ -58,15 +58,22 @@ class Establishment extends Component
         }
     }
 
-    public function updatedClientMode()
+    public function refreshCoordinates($client_lat, $client_long)
     {
-        $coords = $this->establishment['coordinates'];
-
+        $establishment_coords = $this->establishment['coordinates'];
         if($this->client_mode || !$this->is_owner) {
             $this->dispatchBrowserEvent('startMap', [
-                'api_key' => env('MAPBOX_API_KEY'),
-                'destination' => [$coords[1], $coords[0]],
+                'api_key'       => env('MAPBOX_API_KEY'),
+                'origin'        => [$client_lat, $client_long],
+                'destination'   => [$establishment_coords[1], $establishment_coords[0]],
                 ]);
+        }
+    }
+
+    public function updatedClientMode()
+    {
+        if($this->client_mode) {
+            $this->dispatchBrowserEvent('getCoordinates');
         }
     }
 

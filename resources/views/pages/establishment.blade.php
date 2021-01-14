@@ -116,9 +116,6 @@
         @livewire('catalog', ['id' => $establishment->id])
         <h3 class="text-dark mb-1">Direções</h3>
         <div id='map' style="width: 100%;height: 600px;"></div>
-        @if(!$is_owner)
-            <div wire:init="updatedClientMode"></div>
-        @endif
     @endif
 
     @livewire('modal', [

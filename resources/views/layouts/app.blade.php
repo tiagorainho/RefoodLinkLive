@@ -62,13 +62,12 @@
         });
 
         window.addEventListener('startMap', event => {
-            startMap(event.detail.api_key, event.detail.destination);
+            startMap(event.detail.api_key, event.detail.origin, event.detail.destination);
         });
 
         window.addEventListener('getCoordinates', event => {
             var latitude;
             var longitude;
-            console.log("getCoordinates");
             navigator.geolocation.getCurrentPosition(
                 function success(pos) {
                     var loc = pos.coords;
