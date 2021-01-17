@@ -96,3 +96,13 @@ ul {
   transform: scale(1.1);
   background-image:url("/assets/img/structure/star.png");
 }
+
+.notification-button {
+  transition: transform 0.1s;
+  background-image:url("/assets/img/structure/bell2.png");
+}
+
+.notification-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}

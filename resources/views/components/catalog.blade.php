@@ -26,6 +26,12 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
                         <a class="card-button" style="cursor:default">
                             <div class="card shadow mb-3 small-border" style="opacity:0.4">
+                                <div style="margin-bottom:-55px;" class="front row">
+                                    <div class="col"></div>
+                                    <div class="col-auto">
+                                        <div style="width:50px; height:50px;" class="notification-button"></div>
+                                    </div>
+                                </div>
                                 <img class="mb-3 card-image" src={{ asset("assets/img/apresentacao/pastel_de_nata.png") }} style="height: 200px">
                                 <div class="mb-3 ml-2">
                                     <h5 style="margin-bottom: -20px"><strong>{{ $product->name }}</strong></h5><br>

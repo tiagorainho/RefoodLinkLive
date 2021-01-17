@@ -29,8 +29,8 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Preço normal</th>
-                        <th>Preço</th>
+                        <th>Preço original</th>
+                        <th>Preço com desconto</th>
                         <th>Unidades</th>
                         <th style="width: 80px"></th>
                     </tr>
