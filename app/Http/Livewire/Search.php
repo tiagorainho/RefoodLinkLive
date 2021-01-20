@@ -56,12 +56,12 @@ class Search extends Component
         // filter collections
         $this->favorites = Location::get_in_range($this->all_favorites, $this->user_coords, $distance_in_km)
             ->filter(function ($val, $key) use ($searchString) {
-                return str_contains($val->name, $searchString);
+                return str_contains(strtolower($val->name), strtolower($searchString));
             });
 
         $this->not_favorites = Location::get_in_range($this->all_not_favorites, $this->user_coords, $distance_in_km)
             ->filter(function ($val, $key) use ($searchString) {
-                return str_contains($val->name, $searchString);
+                return str_contains(strtolower($val->name), strtolower($searchString));
             });
 
         $this->is_loading = false;

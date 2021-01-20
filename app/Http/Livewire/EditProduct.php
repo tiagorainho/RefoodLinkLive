@@ -64,6 +64,18 @@ class EditProduct extends Component
             ]);
     }
 
+    public function delete()
+    {
+        $product = Product::find($this->product_id);
+        $product->delete();
+        $this->emit('refreshParentProducts');
+        $this->dispatchBrowserEvent('closeModal', ['modalId' => 'modalProductEdit']);
+        $this->dispatchBrowserEvent('server-notification', [
+            'mode' => 'success',
+            'message' => 'Produto eliminado com sucesso!'
+            ]);
+    }
+
     public function refreshModal($id)
     {
         $this->product_id = $id;

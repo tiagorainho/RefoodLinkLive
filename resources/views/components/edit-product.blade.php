@@ -29,6 +29,7 @@
         @error('product') <span class="text-red text-xs">{{ $message }}</span> @enderror
     </div>
     <div class="modal-footer">
+        <button wire:click="delete" type="button" class="btn btn-danger">Eliminar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </div>
