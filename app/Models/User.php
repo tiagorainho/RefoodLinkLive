@@ -56,7 +56,7 @@ class User extends Authenticatable
     ];
 
     public function establishments() {
-        return Establishment::where('owner_id', '=', $this->id)->orderBy('id','DESC')->get();
+        return Establishment::where('owner_id', '=', $this->id)->orderBy('id','DESC');
     }
 
     public function addFavoriteEstablishment($id) {

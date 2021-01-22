@@ -43,7 +43,7 @@ class Establishment extends Component
         $this->establishment = EstablishmentModel::findOrFail($id);
         $this->user = Auth()->user();
         if($this->user->isSeller()) {
-            foreach($this->user->establishments() as $establishment) {
+            foreach($this->user->establishments()->get() as $establishment) {
                 if($establishment->id == $id) {
                     $this->is_owner = true;
                     $this->client_mode = false;

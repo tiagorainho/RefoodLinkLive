@@ -22,14 +22,14 @@ class Establishments extends Component
     {
         $user = Auth()->user();
         if($user->isSeller())
-            $this->establishments = $user->establishments();
+            $this->establishments = $user->establishments()->get();
         else
             return abort(404);
     }
 
     public function refreshEstablishments()
     {
-        $this->establishments = Auth()->user()->establishments();
+        $this->establishments = Auth()->user()->establishments()->get();
     }
 
 }
