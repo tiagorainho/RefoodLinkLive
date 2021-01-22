@@ -105,9 +105,10 @@ class Dashboard extends Component
             $establishment['percentage_total_earnings'] = $establishment->total_earnings*100/$this->orders_price_sum_all;
         }
         $this->establishments = $this->establishments->sortByDesc('total_earnings');
-        if($orders_completed + $orders_canceled == 0) $orders_completed = 1;
-        $this->efficiency = round(($orders_completed/($orders_completed + $orders_canceled))*100, 1);
-        $this->pending_orders = $orders_total - $orders_completed;
+        if($orders_completed + $orders_canceled > 0) {
+            $this->efficiency = round(($orders_completed/($orders_completed + $orders_canceled))*100, 1);
+            $this->pending_orders = $orders_total - $orders_completed;   
+        }     
         $this->set_earnings_chart($this->establishments);
     }
 }
